@@ -1,13 +1,17 @@
-# lignes très pratiques qui appellent les gems du Gemfile. On verra plus tard comment s'en servir ;) - ça évite juste les "require" partout
-require 'pry'
-require 'bundler'
-Bundler.require
+require 'bundler' #Cette ligne charge la bibliothèque Bundler. 
+Bundler.require #Cette ligne charge toutes les gemmes spécifiées dans le fichier Gemfile (ici pry, etc.).
 
 # lignes qui appellent les fichiers lib/user.rb et lib/event.rb
 # comme ça, tu peux faire User.new dans ce fichier d'application. Top.
 require_relative 'lib/user'
 require_relative 'lib/event'
+require_relative 'lib/event_creator'
 
-binding.pry
-# Maintenant c'est open bar pour tester ton application. Tous les fichiers importants sont chargés
-# Tu peux faire User.new, Event.new, binding.pry, User.all, etc.
+event_creator = EventCreator.new
+title = event_creator.title_to_save
+date = event_creator.start_date_to_save
+duration = event_creator.duration_to_save
+attendees = event_creator.attendees_to_save
+
+event = event_creator.create_event(title, date, duration, attendees)
+puts event.to_s
