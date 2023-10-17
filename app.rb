@@ -7,11 +7,4 @@ require_relative 'lib/user'
 require_relative 'lib/event'
 require_relative 'lib/event_creator'
 
-event_creator = EventCreator.new
-title = event_creator.title_to_save
-date = event_creator.start_date_to_save
-duration = event_creator.duration_to_save
-attendees = event_creator.attendees_to_save
-
-event = event_creator.create_event(title, date, duration, attendees)
-puts event.to_s
+binding.pry

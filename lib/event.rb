@@ -28,7 +28,7 @@ class Event
   end
 
   def is_soon?
-    return (is_past?) && (@start_date > (Time.now - 30*60) #1800 secondes ce qui correspond à 30 min
+    @start_date < (Time.now + 30*60) #1800 secondes ce qui correspond à 30 min
   end
 
   def to_s
